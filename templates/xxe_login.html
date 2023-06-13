@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="column is-4 is-offset-4">
+    <h2 class="subtitle" id="flag">Another fucking login form? Are you kidding me?</h2>
+    <h3 class="title">Login</h3>
+    <div class="box">
+        <div class="field">
+            <div class="control">
+                <input class="input is-large" id="username" type="username" name="username" placeholder="Your username" autofocus="">
+            </div>
+        </div>
+        <div class="field">
+            <div class="control">
+                <input class="input is-large" id="password" type="password" name="password" placeholder="Your Password">
+            </div>
+        </div>
+        <input type='button' class='button is-block is-info is-large is-fullwidth' name='next' value='Login' onclick="javascript:doLogin()" />
+    </div>
+    <br>
+    <div>
+        <h2 class="subtitle" id="message"></h2>
+    </div>
+</div>
+<script type='text/javascript'>
+function doLogin() {
+	var username = document.getElementById('username').value;
+	var password = document.getElementById('password').value;
+	if(username == "" || password == ""){
+		alert("Please enter the username and password!");
+		return;
+	}
+
+    document.getElementById('flag').textContent = "Another fucking login form? Are you kidding me?";
+	var data = "<user><username>" + username + "</username><password>" + password + "</password></user>";
+	let ajax = new XMLHttpRequest();
+
+	ajax.open("POST", "doLogin", true);
+    ajax.setRequestHeader("Content-type", "application/xml;charset=utf-8");
+    ajax.send(data);
+
+    ajax.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log("ready")
+            parser = new DOMParser();
+            xmlDoc = parser.parseFromString(ajax.responseText,"text/xml");
+            var code = xmlDoc.getElementsByTagName("code")[0].childNodes[0].nodeValue;
+            var message = xmlDoc.getElementsByTagName("message")[0].childNodes[0].nodeValue;
+            if (code == "0") {
+                document.getElementById('message').textContent = message + " login fail!";
+        	}
+        	else if (code == "1") {
+                document.getElementById('message').textContent = message + " login success!";
+                document.getElementById('flag').textContent = xmlDoc.getElementsByTagName("flag")[0].childNodes[0].nodeValue;
+        	}
+        	else {
+                document.getElementById('message').textContent = "Error: " + message;
+        	}
+        }
+        else {
+            console.log("not ready yet")
+        }
+    };
+}
+</script>
+<!-- /app/creds.txt -->
+{% endblock %}

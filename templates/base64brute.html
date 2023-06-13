@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!--We will we will rock you!-->
+<div class="column is-4 is-offset-4">
+    <h3 class="title">Login</h3>
+    <div class="box">
+        <form method="POST" action="/base64brute">
+            <h5>
+                {{ error_message }}
+            </h5>
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="username" name="username" placeholder="Your username" autofocus="">
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="password" name="password" placeholder="Your Password">
+                </div>
+            </div>
+            <button class="button is-block is-info is-large is-fullwidth">Login</button>
+        </form>
+    </div>
+</div>
+<!--TODO: don't forget to add users other than admin!-->
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title">
+  Flask simple InfoSec App
+</h1>
+<h2 class="subtitle">
+  This application contains several common vulnerabilities. Can you find them all?
+</h2>
+<img src="/static/cat.jpg" alt="Кошка Рыся" width="321" height="427"><br>
+<br>
+<h2 class="subtitle">
+  You can see your score in the top right corner.<br>
+  You can submit the flags on the <a href="/scoreboard"><b><u>scoreboard page</u></b></a>.
+</h2>
+<h2 class="title">
+  Tasks:
+</h2>
+<ul class="list2a">
+  <li><a href="/getbrute">Task 1: can you log in into app?</a></li>
+  <li><a href="/postbrute">Task 2: can you log in into app again?</a></li>
+  <li><a href="/base64brute">Task 3: I performed some methods to obfuscate login</a></li>
+  <li><a href="/fuzzing">Task 4: I lost the directory with sensitive file. Can you help me?</a></li>
+  <li><a href="/login">Task 5: Is it so secure?</a></li>
+  <li><a href="/template/Guest">Task 6: this appears to be vulnerable. Can you watch my config?</a></li>
+  <li><a href="/private">Task 7: maybe task 6 will help you to gain restricted area?</a></li>
+  <li><a href="/corridor">Task 8: can you escape this strange corridor?</a></li>
+  <li><a href="/another_login">Task 9: I like hihihi and xexexe</a></li>
+  <li><a href="/blog">Task 10: Dev blog. What's wrong?</a></li>
+  <li><a href="/secret">Bonus task: RCE?</a></li>
+</ul>
+<br>
+
+{% endblock %}

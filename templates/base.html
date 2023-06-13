@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>InfoSec App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css"/>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <style>
+img {
+    border-radius: 100px;
+    border: 5px solid #098585;
+    #image-rendering: pixelated;
+    box-shadow: 0px 10px 15px 10px #095959;
+}
+.list2a {
+    margin-bottom: 8px;
+    padding:0;
+    list-style: none;
+    counter-reset: li;
+}
+.list2a li {
+    position: relative;
+    border: 5px solid #098585;
+    border-radius: 20px;
+    background: #026b6b;
+    padding:10px 30px 10px 0px;
+    margin:12px 0 12px 40px;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    font-size: 16px;
+    font-weight: bold;
+    color: #c7c3c3;
+}
+.list2a li:hover {
+    background: #2fbdbd;
+}
+.list2a li:before {
+    line-height: 32px;
+    position: absolute;
+    top: 4px;
+    left:-40px;
+    width:40px;
+    text-align:center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #0b3d3d;
+    background: #02a1a1;
+    counter-increment: li;
+    content: counter(li);
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+}
+.list2a li:hover:before {
+    width:46px;
+}
+.list2a li:after {
+    position: absolute;
+    left: 0;
+    top: 4px;
+    content: "";
+    height: 0;
+    width: 0;
+    border: 16px solid transparent;
+    border-left-color: #02a1a1;
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s
+}
+.list2a li:hover:after {
+    margin-left: 6px;
+}
+    </style>
+</head>
+
+<body>
+<section class="hero is-primary is-fullheight">
+
+    <div class="hero-head">
+        <nav class="navbar">
+            <div class="container">
+                <!--<div id="navbarMenuHeroA" class="navbar-menu">-->
+                    <div class="navbar-end">
+                        <a href="/" class="navbar-item">
+                            Home
+                        </a>
+                        <a href="/scoreboard" class="navbar-item">
+                            Scoreboard
+                        </a>
+                        {% if score != None %}
+
+                        <a href="/scoreboard" class="navbar-item">
+                            Score: {{score}}
+                        </a>
+
+                        <a href="https://t.me/SidneyJobChannel" class="navbar-item">
+                            SidneyJob
+                        </a>
+
+                        <a href="https://t.me/CherepawwkaChannel" class="navbar-item">
+                            cherepawwka
+                        </a>
+
+                        {% endif %}
+                    </div>
+                <!--</div>-->
+            </div>
+        </nav>
+    </div>
+
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+</section>
+</body>
+
+</html>

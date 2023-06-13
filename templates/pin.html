@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!--QUESTION: Maybe there is a hidden param?-->
+<h1 class="title">
+    Welcome to secret page
+</h1>
+<div>
+    <h2 class="subtitle">
+        Maybe SidneyJob can help you?
+    </h2>
+    <div class="column is-4 is-offset-4">
+    <form action="/secret" method="GET">
+        <div class="field">
+            <div class="control">
+                <input class="input is-large" type="search" name="pin" placeholder="XXX-XXX-XXX" autofocus="">
+            </div>
+        </div>
+        <button class="button is-block is-info is-large is-fullwidth">Send PIN</button>
+    </form>
+    <br>
+    {% if file != '' %} <h2>{{file}}</h2> {% endif%}
+    {% if pin == True %} <h1>Flag: {{flag}}</h1> {% endif%}
+    </div>
+</div>
+<!--QUESTION: Maybe Open-Source INTelligence will help you?-->
+<!--VAR: hmm... path? {{path}}-->
+{% endblock %}

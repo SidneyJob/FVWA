@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% autoescape false %}
+
+    <!-- Header -->
+    <header>
+      <h1 class="title">Demo comment blog</h1>
+      <h2 class="subtitle">You can read, search and post comments</h2>
+    </header>
+
+    <div class="column is-4 is-offset-4">
+        <div class="box">
+            <h2 class="subtitle has-text-danger">You may practice your XSS skills, but we don`t known how to verify successful exploitation.
+        If you have some ideas, please contact us @SidneyJob, @cherepawwka</h2>
+            <h2 class="subtitle has-text-info">
+                Flag for Reflected XSS: {{flagr}}<br>
+                Flag for Stored XSS: {{flags}}</h2>
+        </div>
+    </div>
+
+    <!-- Search form -->
+<div class="column is-4 is-offset-4">
+
+    <div class="box">
+        <form action="/reset_commentdb" method="POST">
+            <div class="field">
+                <div class="control">
+                    <input class="button is-block is-danger is-large is-fullwidth is-outlined" type="submit" value="Clear DB" />
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="box">
+        <form method="GET">
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="text" name="query"
+             placeholder="Search query" autocomplete="off" />
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <input class="button is-block is-info is-large is-fullwidth is-outlined" type="submit" value="Filter comments" />
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Comments -->
+    <div class="box has-background-info">
+    {% if not search_query %}
+        <h3 class="title is-size-4">Showing all comments:</h3>
+    {% else %}
+        <h3 class="title is-size-4">Showing comments containing</h3>
+        <input class="input is-info has-background-info has-text-centered title is-size-4" type="text" value="{{ search_query }}:" disabled>
+    {% endif %}
+    {% for comment in comments %}
+        <div>
+            <p class="subtitle">{{ comment }}</p>
+        </div>
+    {% endfor %}
+    </div>
+    <!-- Write form -->
+    <div class="box">
+        <form action="/blog" method="POST">
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="text" name="comment"
+             placeholder="Comment" autocomplete="off" />
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <input class="button is-block is-info is-large is-fullwidth is-outlined" type="submit" value="Submit new comment" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endautoescape %}
+
+{% endblock %}

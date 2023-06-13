@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title">
+  Submit Flags
+</h1>
+
+{% if status != '' and status != None %}
+
+<h2 class="subtitle">
+    INFO: {{ status }}
+</h2>
+
+{% endif %}
+
+
+<img src="/static/room4.jpg" alt="Corridor" width="1380" height="920"><br>
+<br>
+
+<style>
+
+
+.flag_input{
+    text-align:center;
+    height: 100px;
+    width: 500px;
+    margin:30px 0;
+
+    border-radius:40px;
+    border: 6px solid transparent;
+
+    border-color: #02a1a1;
+    background-color: #026b6b;
+    
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+}
+
+.flag_submit{
+    text-align:center;
+    color: white;
+
+    height: 50px;
+    width: 120px;
+    margin:12px 0 12px 40px;
+
+    border-radius: 20px;
+    border: 5px solid #098585;
+
+    border-color: #02a1a1;   
+    background-color: #026b6b;
+
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+}
+
+
+
+
+.flag_submit:hover {
+    background: #2fbdbd;
+}
+
+.flag_input:hover {
+    background: #2fbdbd;
+}
+
+.flag_input placeholder{
+    text-align:center;
+}
+
+
+</style>
+
+<script>
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+      }
+</script>
+
+
+<form id='form_flag'>
+    <input type="text" name="flag", class="flag_input" placeholder="flag{jhSqo6DAVG0s4bqa_bQBjyOsG6YlKPskD}" required>
+    <input type="submit" class="flag_submit" value="&nbsp;Send flag&nbsp;">
+ </form>
+
+
+<ul class="list2a">
+    {% for i in tasks %}
+
+    {% if solve["flag_"+i[0]] %}
+    <li class="has-background-success has-text-white">
+        Task: {{i[0]}}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspValue: {{i[1]}}
+        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Status: True
+    </li>
+    {% endif %}
+    
+    
+    {% if not solve["flag_"+i[0]] %}
+    <li class="has-background-grey-dark has-text-white">
+        Task: {{i[0]}}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspValue: {{i[1]}}
+        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Status: False
+        
+    </li>
+    {% endif %}
+    
+    {% endfor %}
+</ul>
+
+
+
+
+
+{% endblock %}
