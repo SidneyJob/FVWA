@@ -3,6 +3,8 @@
 # RU
 
 ## О проекте
+
+![Title](./static/logo.jpg)
 Уязвимое веб-приложение, чтобы любой желающий мог попрактиковаться в разных уязвимостях и отточить свои навыки.
 
 
@@ -39,6 +41,7 @@ sudo docker run --rm --name FlaskLab -it -p 8080:5001 flaskapp
 # EN
 
 ## About project
+![Title](./static/logo.jpg)
 Vulnerable web application to hone your web application security skills.
 
 
