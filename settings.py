@@ -163,7 +163,7 @@ def base64brute_login():
     username = request.form.get('username')
     password = request.form.get('password')
     if username and password:
-        if username == 'YWRtaW4=' and password == 'Y2hpY2tlbm51Z2dldA==':  # admin + chickennugget
+        if username == 'admin' and password == 'ZG9nZG9n':  # admin + dogdog
             return render_template("flag.html", message="Good job! Nice Base64 POST brute. Take your flag:",
                                    flag=app.flag_base64brute[0], score = app.score)
         else:
