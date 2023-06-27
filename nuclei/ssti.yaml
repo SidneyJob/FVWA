@@ -1,0 +1,33 @@
+id: ssti_lab
+
+info:
+  name: Check SidneyJob and cherepawwka lab
+  author: SidneyJob
+  severity: low
+
+
+variables:
+  first: "{{rand_int(10000, 99999)}}"
+  second: "{{rand_int(10000, 99999)}}"
+  result: "{{to_number(first) * to_number(second)}}"
+
+http:
+  - method: GET
+    path: 
+      - "{{BaseURL}}"
+      - "{{BaseURL}}/template/§first§*§second§"  
+      - "{{BaseURL}}/template/{{reflection}}"
+
+    payloads:
+      reflection:
+        - '{{concat( "{{", "§first§*§second§")}}'
+
+
+    cookie-reuse: true
+    matchers:
+      - type: status
+        status:
+          - 500
+          - 502
+          - 503
+          - 504

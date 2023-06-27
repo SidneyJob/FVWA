@@ -1,0 +1,25 @@
+id: fuzzing
+
+info:
+  name: Check SidneyJob and cherepawwka lab
+  author: SidneyJob
+  severity: low
+  description: Check correct fuzzing page
+
+http:
+
+  - raw:
+    - |
+      GET / HTTP/2
+      Host: {{Hostname}}
+
+    - |
+      GET /fuzzing/security_info/mysecret.txt HTTP/2
+      Host: {{Hostname}}
+      
+    cookie-reuse: true
+    matchers:
+      - type: word
+        part: body
+        words:
+          - "flag{"

