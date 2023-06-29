@@ -9,6 +9,10 @@ info:
 http:
   - raw:
     - |
+      GET / HTTP/2
+      Host: {{Hostname}}
+      
+    - |
       POST /postbrute HTTP/2
       Host: {{Hostname}}
       Content-Type: application/x-www-form-urlencoded
