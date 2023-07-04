@@ -1,4 +1,4 @@
-# FlaskApp
+# FVWA (Flask Vulnerable Web Application)
 
 # RU
 
