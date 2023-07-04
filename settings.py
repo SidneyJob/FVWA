@@ -282,8 +282,8 @@ def get_comments(search_query=None):
 
 
 
-def get_machine_id() -> str | bytes | None:
-    def _generate() -> str | bytes | None:
+def get_machine_id():
+    def _generate():
         linux = b""
 
         # machine-id is stable across boots, boot_id is not.
