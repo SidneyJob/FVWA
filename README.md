@@ -29,10 +29,10 @@
 
 ## Установка
 ```bash
-git clone https://github.com/SidneyJob/FlaskApp.git
-cd FlaskApp
-sudo docker build . -t flaskapp
-sudo docker run --rm --name FlaskLab -it -p 8080:5001 flaskapp
+git clone https://github.com/SidneyJob/FVWA.git
+cd FVWA
+sudo docker build . -t fvwa
+sudo docker run --rm --name FVWA -it -p 8080:5001 fvwa
 ```
 
 Готово! Теперь лабаратория запущена у вас по адресу http://127.0.0.1:8080
@@ -65,10 +65,10 @@ Application contains 11 tasks on the following topics:
 
 ## Installation
 ```bash
-git clone https://github.com/SidneyJob/FlaskApp.git
-cd FlaskApp
-sudo docker build . -t flaskapp
-sudo docker run --rm --name FlaskLab -it -p 8080:5001 flaskapp
+git clone https://github.com/SidneyJob/FVWA.git
+cd FVWA
+sudo docker build . -t fvwa
+sudo docker run --rm --name FVWA -it -p 8080:5001 fvwa
 ```
 
 Done! Now the laboratory is running at http://127.0.0.1:8080
