@@ -31,7 +31,7 @@
 git clone https://github.com/SidneyJob/FVWA.git
 cd FVWA
 sudo docker build . -t fvwa
-sudo docker run --rm --name FVWA -it -p 8080:5001 fvwa
+sudo docker run -d --rm --name FVWA -it -p 8080:5001 fvwa
 ```
 
-Готово! Теперь лабаратория запущена у вас по адресу http://127.0.0.1:8080
+**Готово! Теперь лабаратория запущена у вас по адресу http://127.0.0.1:8080**
