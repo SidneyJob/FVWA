@@ -1,21 +1,14 @@
-FROM ubuntu:18.04
-
-RUN mkdir /app
-
-RUN apt update -y
-RUN apt install python3 -y && apt install python3-pip -y
-
+FROM python:3.9-slim
 
 WORKDIR /app
-COPY ./requirements.txt /app/requirements.txt
+COPY ./requirements.txt ./
 
-RUN python3 -m pip install -r requirements.txt
-COPY ./main.py /app/app.py
-COPY ./settings.py /app/settings.py
+RUN pip install -r requirements.txt
 
-COPY ./templates /app/templates
-COPY ./static /app/static
-
+COPY ./main.py ./app.py
+COPY ./settings.py ./settings.py
+COPY ./templates ./templates
+COPY ./static ./static
 
 ENTRYPOINT [ "python3" ]
 CMD [ "app.py" ]
