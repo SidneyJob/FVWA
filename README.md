@@ -1,7 +1,5 @@
 # FVWA (Flask Vulnerable Web Application)
 
-# RU
-
 ## О проекте
 
 ![Title](./static/logo.jpg)
