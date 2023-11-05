@@ -28,7 +28,7 @@ Application contains 11 tasks on the following topics:
 git clone https://github.com/SidneyJob/FVWA.git
 cd FVWA
 sudo docker build . -t fvwa
-sudo docker run --rm --name FVWA -it -p 8080:5001 fvwa
+sudo docker run -d --rm --name FVWA -it -p 8080:5001 fvwa
 ```
 
-Done! Now the laboratory is running at http://127.0.0.1:8080
+**Done! Now the laboratory is running at http://127.0.0.1:8080**
