@@ -10,7 +10,6 @@
 Данная лаборатория была сделала двумя русскими энтузиастами:
 - [cherepawwka](https://t.me/CherepawwkaChannel)
 - [SidneyJob](https://t.me/SidneyJobChannel)
-- [szybnev](https://t.me/szybnev)
 
 
 ## Описание
