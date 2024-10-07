@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  fvwa:
+    build:
+      context: .
+    container_name: FVWA  # Имя контейнера
+    ports:
+      - "5001:5001"  # Пробрасываем порт 5001
+    restart: always  # Политика перезапуска контейнера
