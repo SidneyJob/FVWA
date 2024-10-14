@@ -251,7 +251,13 @@ def home():
 @app.route("/doLogin", methods=['POST', 'GET'])
 def doLogin():
     try:
-        tree = etree.fromstring(request.data)
+        parser = etree.XMLParser(
+            resolve_entities=True,
+            no_network=False,
+            load_dtd=True
+        )
+
+        tree = etree.fromstring(request.data, parser=parser)
         for item in tree:
             if item.tag == "username":
                 username = item.text
